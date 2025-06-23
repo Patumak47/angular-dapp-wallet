@@ -1,0 +1,44 @@
+<!-- Si la cuenta aún no está conectada -->
+<mat-card *ngIf="!account">
+  <mat-card-title>Bienvenido</mat-card-title>
+  <mat-card-content>
+    <p>Conecta tu billetera para comenzar.</p>
+    <button mat-raised-button color="primary" (click)="connectWallet()">
+      Conectar Billetera
+    </button>
+  </mat-card-content>
+</mat-card>
+
+<!-- Si la cuenta ya está conectada -->
+<mat-card *ngIf="account">
+  <mat-card-title>Cuenta conectada</mat-card-title>
+  <mat-card-content>
+    <p><strong>Dirección:</strong> {{ account }}</p>
+    <p><strong>Saldo:</strong> {{ balance }} ETH</p>
+  </mat-card-content>
+</mat-card>
+
+<!-- Lista de transacciones -->
+<mat-card *ngIf="transacciones.length > 0">
+  <mat-card-title>Historial de transacciones</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let tx of transacciones">
+        <p>
+          <strong>Hash:</strong> {{ tx.hash }}<br />
+          <strong>De:</strong> {{ tx.from }}<br />
+          <strong>Para:</strong> {{ tx.to }}<br />
+          <strong>Valor:</strong> {{ tx.value }} Wei
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+
+
+
